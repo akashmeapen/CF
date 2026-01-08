@@ -4,38 +4,30 @@ using namespace std;
 int main()
 {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(NULL);
+
     int t;
     cin >> t;
     while (t--)
     {
-        int a, b;
-        cin >> a >> b;
-        vector<int> arr(a);
-        for (int i = 0; i < a; i++)
+        int n, k;
+        cin >> n >> k;
+
+        vector<int> a(n);
+        for (int i = 0; i < n; i++)
+            cin >> a[i];
+
+        vector<int> lol(n + 2, 0);
+        for (int x : a)
+            lol[x]++;
+
+        int m= 0;
+        while (m < n + 1 && lol[m] > 0)
         {
-            cin >> arr[i];
+            m++;
         }
-        bool allZero = true;
-        for (int i = 0; i < a; i++)
-        {
-            if (arr[i] != 0)
-            {
-                allZero = false;
-                break;
-            }
-        }
-        if (allZero)
-        {
-            cout << 1 << "\n";
-        }
-        else if (a % 2 == 0)
-        {
-            cout << arr[a / 2] << "\n";
-        }
-        else
-        {
-            cout << arr[int(a / 2)] << "\n";
-        }
+
+        cout << min(m, k - 1) << "\n";
     }
+    return 0;
 }
