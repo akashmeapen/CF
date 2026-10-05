@@ -3,6 +3,9 @@ using namespace std;
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
     int t;
     cin >> t;
     while (t--)
@@ -11,26 +14,21 @@ int main()
         cin >> n;
         string s;
         cin >> s;
-        stack<char> st;
-        for (char c : s)
+        int count = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (!st.empty() && st.top() == c)
+            if (s[i] == '(')
             {
-                st.pop();
-            }
-            else
-            {
-                st.push(c);
+                count += 1;
             }
         }
-
-        if (st.empty())
+        if (2 * count == n)
         {
-            cout << "YES" << "\n";
+            cout << "YES\n";
         }
         else
         {
-            cout << "NO" << "\n";
+            cout << "NO\n";
         }
     }
     return 0;
